@@ -1,0 +1,293 @@
+@import "tailwindcss";
+
+@theme {
+  --color-india-blue: #000080;
+  --color-india-saffron: #f97316;
+  --color-india-green: #15803d;
+  
+  --bg-main: rgba(255, 255, 255, 0.5);
+  --bg-card: rgba(248, 250, 252, 0.7);
+  --text-primary: #000000;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+  --border-color: #e2e8f0;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+.dark {
+  --color-india-blue: #60a5fa;
+  --color-india-saffron: #fb923c;
+  --color-india-green: #4ade80;
+
+  --bg-main: rgba(2, 6, 23, 0.5);
+  --bg-card: rgba(15, 23, 42, 0.7);
+  --text-primary: #ffffff;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --border-color: #1e293b;
+  --shadow-color: rgba(0, 0, 0, 0.4);
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/India_States_and_UTs_Map.svg/1024px-India_States_and_UTs_Map.svg.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.25;
+  filter: saturate(1.2) contrast(1.05);
+  z-index: -2;
+  pointer-events: none;
+}
+
+.dark body::before {
+  opacity: 0.25;
+  filter: brightness(0.8) saturate(1.8) contrast(1.2);
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  letter-spacing: -0.03em;
+  font-weight: 800;
+}
+
+.header-gradient {
+  background: linear-gradient(135deg, rgba(251, 146, 60, 0.8), rgba(255, 255, 255, 0.8), rgba(74, 222, 128, 0.8));
+  background-size: 200% 200%;
+  backdrop-filter: blur(10px);
+  animation: gradient-shift 10s ease infinite;
+}
+
+.dark .header-gradient {
+  background: linear-gradient(135deg, rgba(124, 45, 18, 0.8), rgba(2, 6, 23, 0.8), rgba(6, 78, 59, 0.8));
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.card-shadow {
+  background-color: var(--bg-card);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 6px -1px var(--shadow-color);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-shadow:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 25px 50px -12px var(--shadow-color);
+  border-color: var(--color-india-blue);
+}
+
+.animate-in {
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation-name: fadeIn;
+}
+
+.btn-primary {
+  background-color: var(--color-india-blue);
+  color: #ffffff;
+  font-weight: 700;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  transition: all 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-primary:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.btn-secondary {
+  background-color: var(--color-india-saffron);
+  color: #ffffff;
+  font-weight: 700;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  transition: all 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-secondary:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.history-badge {
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+input, select {
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  transition: all 0.2s;
+}
+
+input:focus, select:focus {
+  border-color: var(--color-india-blue);
+  ring: 2px solid var(--color-india-blue);
+}
+
+.text-india-blue { color: var(--color-india-blue); }
+.text-india-saffron { color: var(--color-india-saffron); }
+.text-india-green { color: var(--color-india-green); }
+
+.label-text {
+  color: var(--text-muted);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.7rem;
+}
+
+.destination-card {
+  position: relative;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+}
+
+.destination-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.8));
+  z-index: -1;
+  transition: opacity 0.4s;
+}
+
+.destination-card:hover::before {
+  background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.9));
+}
+
+.destination-card h3, 
+.destination-card p, 
+.destination-card span {
+  color: #ffffff !important;
+}
+
+.destination-card .bg-orange-100 {
+  background-color: rgba(249, 115, 22, 0.3) !important;
+  backdrop-filter: blur(4px);
+}
+
+.destination-card .border-slate-200 {
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.destination-card .border-t {
+  border-top-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.dark-section {
+  background-image: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1920&q=80');
+  background-size: cover;
+  background-position: center;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.boxed-btn {
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  background-color: var(--color-india-blue);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.boxed-btn:hover {
+  border-color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.dark-section .label-text {
+  color: #ffffff !important;
+  opacity: 0.9;
+}
+
+.dark-section input, 
+.dark-section select {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+  color-scheme: dark;
+}
+
+.dark-section select option {
+  color: #1e293b !important; /* slate-800 */
+  background-color: #ffffff !important;
+}
+
+.dark-section input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.dark-section .border-t {
+  border-top-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Modal Styles */
+#world-map-modal.hidden {
+  display: none !important;
+}
+
+#world-map-modal.opacity-100 {
+  opacity: 1;
+}
+
+#modal-content.scale-100 {
+  transform: scale(1);
+}

@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Indian Road Travel Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body class="relative">
+    
+    <!-- Header Section -->
+    <header class="header-gradient py-8 px-4 shadow-lg mb-8 relative">
+      <div class="absolute top-4 right-4 flex items-center gap-2">
+        <button id="world-map-toggle" class="p-2 rounded-full bg-white/20 backdrop-blur-md border border-white/30 hover:bg-white/40 transition-all group flex items-center gap-2 shadow-lg" title="View India on World Map" aria-label="Open World Map showing India">
+          <svg viewBox="0 0 24 24" width="32" height="32" class="drop-shadow-md transition-transform group-hover:scale-110">
+            <defs>
+              <linearGradient id="india-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color:#f97316;stop-opacity:1" />
+                <stop offset="50%" style="stop-color:#ffffff;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#15803d;stop-opacity:1" />
+              </linearGradient>
+            </defs>
+            <path fill="url(#india-grad)" d="M12.5,2.5 L13.5,3.5 L15,3.5 L15.5,4.5 L17,4.5 L17.5,5.5 L16.5,7.5 L17.5,9.5 L16,11.5 L15.5,13.5 L14,14.5 L13,16.5 L12,18.5 L11,16.5 L10,14.5 L8.5,13.5 L8,11.5 L9,9.5 L8,7.5 L8.5,5.5 L10,4.5 L10.5,3.5 L12.5,2.5 Z" stroke="#000080" stroke-width="0.5" />
+          </svg>
+          <span class="text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white hidden sm:block">Explore Map</span>
+        </button>
+        <button id="dark-mode-toggle" class="p-2 rounded-full bg-white/20 backdrop-blur-md border border-white/30 hover:bg-white/30 transition-all" title="Toggle Dark Mode">
+          <svg id="sun-icon" class="hidden text-yellow-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+          <svg id="moon-icon" class="text-slate-800" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        </button>
+      </div>
+      <div class="max-w-6xl mx-auto text-center">
+        <h1 class="text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight mb-2">
+          Indian Road Travel Guide <span class="text-india-blue">🇮🇳</span>
+        </h1>
+        <p class="text-slate-700 dark:text-slate-300 font-medium">Explore the diverse landscapes of India by road</p>
+      </div>
+    </header>
+
+    <!-- World Map Modal -->
+    <div id="world-map-modal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/80 backdrop-blur-md hidden opacity-0 transition-all duration-300" role="dialog" aria-labelledby="modal-title" aria-modal="true">
+      <div class="relative w-full max-w-5xl bg-white dark:bg-slate-900 rounded-[2rem] overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.3)] transform scale-95 transition-all duration-300 border border-white/20" id="modal-content">
+        <div class="absolute top-6 right-6 z-10">
+          <button id="close-modal" class="p-3 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-india-saffron hover:text-white transition-all shadow-lg" aria-label="Close Modal">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+          </button>
+        </div>
+        <div class="p-10">
+          <div class="flex items-center gap-4 mb-8">
+            <div class="w-12 h-12 bg-india-saffron rounded-xl flex items-center justify-center shadow-lg">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="white">
+                <path d="M12.5,2.5 L13.5,3.5 L15,3.5 L15.5,4.5 L17,4.5 L17.5,5.5 L16.5,7.5 L17.5,9.5 L16,11.5 L15.5,13.5 L14,14.5 L13,16.5 L12,18.5 L11,16.5 L10,14.5 L8.5,13.5 L8,11.5 L9,9.5 L8,7.5 L8.5,5.5 L10,4.5 L10.5,3.5 L12.5,2.5 Z" />
+              </svg>
+            </div>
+            <div>
+              <h2 id="modal-title" class="text-3xl font-black text-slate-900 dark:text-white leading-none">India in the World</h2>
+              <p class="text-slate-500 dark:text-slate-400 font-bold uppercase tracking-widest text-[10px] mt-1">Geographical Context</p>
+            </div>
+          </div>
+          
+          <div class="relative aspect-[16/9] rounded-3xl overflow-hidden bg-white dark:bg-slate-950 border-4 border-slate-100 dark:border-slate-800 shadow-2xl ring-8 ring-india-saffron/10">
+            <!-- Large, Clear India Map with Tricolor Theme -->
+            <div class="absolute inset-0 flex items-center justify-center p-6 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-sky-50 via-white to-white dark:from-slate-900 dark:via-slate-950 dark:to-slate-950">
+              <div class="relative h-full w-full flex items-center justify-center">
+                <!-- Background Glow -->
+                <div class="absolute w-[80%] h-[80%] bg-gradient-to-tr from-india-saffron/20 via-white/0 to-india-green/20 rounded-full blur-[100px] animate-pulse"></div>
+                
+                <!-- Tricolor Border Accent -->
+                <div class="absolute inset-0 border-4 border-transparent bg-gradient-to-r from-india-saffron via-white to-india-green [mask-image:linear-gradient(to_bottom,black,transparent_20%,transparent_80%,black)] opacity-30"></div>
+                
+                <!-- The Map Image -->
+                <img 
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/India_States_and_UTs_Map.svg/1024px-India_States_and_UTs_Map.svg.png" 
+                  alt="Detailed India Map" 
+                  class="h-full w-auto object-contain drop-shadow-[0_20px_60px_rgba(0,0,0,0.25)] z-10 transition-all duration-700 hover:scale-105 hover:drop-shadow-[0_30px_80px_rgba(0,0,0,0.3)]"
+                  referrerPolicy="no-referrer"
+                />
+                
+                <!-- Floating Labels for Major Cities -->
+                <div class="absolute top-[25%] left-[45%] z-20">
+                  <div class="flex flex-col items-center group cursor-default">
+                    <div class="w-4 h-4 bg-india-saffron rounded-full border-2 border-white shadow-[0_0_15px_rgba(249,115,22,0.5)] animate-bounce"></div>
+                    <span class="mt-2 px-3 py-1 bg-white/95 dark:bg-slate-800/95 backdrop-blur-md text-[11px] font-black rounded-lg shadow-xl border border-india-saffron/30 text-slate-900 dark:text-white transform transition-transform group-hover:scale-110">NEW DELHI</span>
+                  </div>
+                </div>
+                <div class="absolute top-[55%] left-[38%] z-20">
+                  <div class="flex flex-col items-center group cursor-default">
+                    <div class="w-3 h-3 bg-india-blue rounded-full border-2 border-white shadow-[0_0_10px_rgba(0,0,128,0.4)]"></div>
+                    <span class="mt-2 px-3 py-1 bg-white/95 dark:bg-slate-800/95 backdrop-blur-md text-[10px] font-black rounded-lg shadow-xl border border-india-blue/30 text-slate-900 dark:text-white transform transition-transform group-hover:scale-110">MUMBAI</span>
+                  </div>
+                </div>
+                <div class="absolute top-[75%] left-[55%] z-20">
+                  <div class="flex flex-col items-center group cursor-default">
+                    <div class="w-3 h-3 bg-india-green rounded-full border-2 border-white shadow-[0_0_10px_rgba(21,128,61,0.4)]"></div>
+                    <span class="mt-2 px-3 py-1 bg-white/95 dark:bg-slate-800/95 backdrop-blur-md text-[10px] font-black rounded-lg shadow-xl border border-india-green/30 text-slate-900 dark:text-white transform transition-transform group-hover:scale-110">CHENNAI</span>
+                  </div>
+                </div>
+                <div class="absolute top-[50%] left-[65%] z-20">
+                  <div class="flex flex-col items-center group cursor-default">
+                    <div class="w-3 h-3 bg-india-blue rounded-full border-2 border-white shadow-[0_0_10px_rgba(0,0,128,0.4)]"></div>
+                    <span class="mt-2 px-3 py-1 bg-white/95 dark:bg-slate-800/95 backdrop-blur-md text-[10px] font-black rounded-lg shadow-xl border border-india-blue/30 text-slate-900 dark:text-white transform transition-transform group-hover:scale-110">KOLKATA</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Map Legend -->
+            <div class="absolute bottom-6 right-6 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl p-6 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-[0_20px_50px_rgba(0,0,0,0.2)] z-30">
+              <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-4">Map Legend</p>
+              <div class="space-y-4">
+                <div class="flex items-center gap-4">
+                  <div class="w-6 h-6 rounded-lg bg-gradient-to-b from-india-saffron via-white to-india-green border border-slate-200 shadow-sm"></div>
+                  <span class="text-xs font-black text-slate-800 dark:text-slate-100">National Tricolor</span>
+                </div>
+                <div class="flex items-center gap-4">
+                  <div class="w-4 h-4 bg-india-saffron rounded-full shadow-[0_0_10px_rgba(249,115,22,0.4)] animate-pulse border-2 border-white"></div>
+                  <span class="text-xs font-black text-slate-800 dark:text-slate-100">National Capital</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-700">
+              <p class="text-[10px] font-black text-india-saffron uppercase mb-1">Continent</p>
+              <p class="text-lg font-black dark:text-white">Asia</p>
+            </div>
+            <div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-700">
+              <p class="text-[10px] font-black text-india-blue uppercase mb-1">Region</p>
+              <p class="text-lg font-black dark:text-white">South Asia</p>
+            </div>
+            <div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-700">
+              <p class="text-[10px] font-black text-india-green uppercase mb-1">Capital</p>
+              <p class="text-lg font-black dark:text-white">New Delhi</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      
+      <!-- Search & Filter Section -->
+      <section class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 mb-8">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+          <div class="lg:col-span-2">
+            <label class="block label-text mb-2">Search Destinations</label>
+            <div class="relative">
+              <input 
+                type="text" 
+                id="search-input" 
+                placeholder="Search by city or state..." 
+                class="w-full p-4 pl-12 rounded-xl border border-slate-200 dark:border-slate-700 focus:ring-2 focus:ring-india-blue focus:border-transparent outline-none transition-all bg-slate-50 dark:bg-slate-900/50"
+              />
+              <svg class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            </div>
+          </div>
+          
+          <div>
+            <label class="block label-text mb-2">Filter by State</label>
+            <select id="state-filter" class="w-full p-4 rounded-xl border border-slate-200 dark:border-slate-700 outline-none bg-slate-50 dark:bg-slate-900/50 font-bold text-slate-700 dark:text-slate-200">
+              <option value="">All States</option>
+              <!-- States will be injected here -->
+            </select>
+          </div>
+
+          <div>
+            <label class="block label-text mb-2">Max Budget (₹/person)</label>
+            <select id="budget-filter" class="w-full p-4 rounded-xl border border-slate-200 dark:border-slate-700 outline-none bg-slate-50 dark:bg-slate-900/50 font-bold text-slate-700 dark:text-slate-200">
+              <option value="">Any Budget</option>
+              <option value="4000">Under ₹4,000</option>
+              <option value="6000">Under ₹6,000</option>
+              <option value="8000">Under ₹8,000</option>
+              <option value="10000">Under ₹10,000</option>
+              <option value="15000">Under ₹15,000</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="mt-6 flex justify-end">
+          <button 
+            id="sort-btn" 
+            class="px-6 py-3 bg-slate-100 dark:bg-slate-700 border border-slate-200 dark:border-slate-700 rounded-xl font-bold text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors flex items-center gap-2"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 16 4 4 4-4"/><path d="M7 20V4"/><path d="m21 8-4-4-4 4"/><path d="M17 4v16"/></svg>
+            Sort by Cost (Bubble Sort)
+          </button>
+        </div>
+      </section>
+
+      <!-- Route Finder Section (Graph & Dijkstra) -->
+      <section class="dark-section p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 mb-12">
+        <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-india-saffron"><circle cx="12" cy="12" r="10"/><path d="M16.2 7.8 7.8 16.2"/><path d="m7.8 7.8 8.4 8.4"/></svg>
+          Smart Route Finder
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <div>
+            <label class="block label-text mb-2">Source City</label>
+            <select id="source-select" class="w-full p-4 rounded-xl border border-slate-200 dark:border-slate-700 dark:bg-slate-900 dark:text-white outline-none">
+              <option value="">Select Source</option>
+            </select>
+          </div>
+          <div>
+            <label class="block label-text mb-2">Destination City</label>
+            <select id="dest-select" class="w-full p-4 rounded-xl border border-slate-200 dark:border-slate-700 dark:bg-slate-900 dark:text-white outline-none">
+              <option value="">Select Destination</option>
+            </select>
+          </div>
+          <div class="flex items-end">
+            <button id="find-route-btn" class="w-full py-4 bg-india-blue text-white rounded-xl font-bold hover:opacity-90 transition-opacity boxed-btn">
+              Find Shortest Route
+            </button>
+          </div>
+        </div>
+
+        <div id="route-result" class="mb-8">
+          <!-- Route details injected here -->
+        </div>
+
+        <div id="visual-map" class="flex items-center justify-center overflow-x-auto py-6 min-h-[120px]">
+          <!-- Visual path nodes injected here -->
+        </div>
+      </section>
+
+      <!-- Navigation History Section -->
+      <section class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm mb-8 border border-slate-100 dark:border-slate-700">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div>
+            <h2 class="label-text mb-4">Navigation History (Stack)</h2>
+            <div id="history-stack" class="flex flex-wrap gap-2">
+              <!-- History badges injected here -->
+            </div>
+          </div>
+          <button id="go-back-btn" class="px-8 py-3 bg-slate-900 dark:bg-slate-700 text-white rounded-xl font-bold hover:bg-slate-800 dark:hover:bg-slate-600 transition-all">
+            Go Back
+          </button>
+        </div>
+      </section>
+
+      <!-- Destinations Grid -->
+      <section id="tourist-places" class="mb-12">
+        <h2 class="text-3xl font-black text-black mb-8 flex items-center gap-3">
+          <span class="w-3 h-10 bg-india-saffron rounded-full"></span>
+          Explore Tourist Places
+        </h2>
+        <div id="destinations-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- Destination cards injected here -->
+        </div>
+      </section>
+
+      <!-- Nearby Attractions Section (Dynamic) -->
+      <section id="nearby-attractions-section" class="hidden mb-12 bg-white dark:bg-slate-800 p-8 rounded-3xl shadow-xl border border-slate-100 dark:border-slate-700 animate-in fade-in slide-in-from-bottom-4 duration-500">
+        <div class="flex justify-between items-start mb-8">
+          <div>
+            <h2 id="nearby-title" class="text-3xl font-black text-india-blue dark:text-blue-400 mb-2">Nearby Attractions</h2>
+            <p id="nearby-subtitle" class="text-slate-500 dark:text-slate-400 font-medium">Discover what's around this city</p>
+          </div>
+          <button onclick="closeNearby()" class="p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-full transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+          </button>
+        </div>
+        <div id="attractions-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Attractions injected here -->
+        </div>
+        
+        <div class="mt-10 pt-8 border-t border-slate-100 dark:border-slate-700">
+          <h3 class="label-text mb-4">Neighboring Cities (Graph Adjacency List)</h3>
+          <div id="neighbor-cities" class="flex flex-wrap gap-3">
+            <!-- Neighbors injected here -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Road Trip Planner Section -->
+      <section class="bg-india-blue/5 dark:bg-india-blue/10 p-8 rounded-2xl border-2 border-dashed border-india-blue/20 dark:border-india-blue/40 mb-12">
+        <div class="flex justify-between items-center mb-6">
+          <h2 class="text-2xl font-bold text-india-blue dark:text-blue-400">Road Trip Planner (Queue)</h2>
+          <button id="clear-trip-btn" class="text-xs font-bold text-red-600 dark:text-red-400 hover:underline">Clear Plan</button>
+        </div>
+        <div id="trip-queue-display" class="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-inner min-h-[80px] flex items-center flex-wrap">
+          <!-- Trip path injected here -->
+        </div>
+        <p class="mt-4 text-sm text-slate-500 dark:text-slate-400 italic">Places are added in the order you select them.</p>
+      </section>
+
+      <!-- Budget & Share Section -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <!-- Budget Planner Section -->
+        <section class="dark-section p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700">
+          <h2 class="text-2xl font-bold text-white mb-6">Budget Planner</h2>
+          <div class="grid grid-cols-2 gap-6 mb-8">
+            <div>
+              <label class="block label-text mb-2">Travel Cost (₹)</label>
+              <input type="number" id="travel-cost" class="w-full p-3 border dark:border-slate-600 rounded-xl" placeholder="0">
+            </div>
+            <div>
+              <label class="block label-text mb-2">Food Cost (₹)</label>
+              <input type="number" id="food-cost" class="w-full p-3 border dark:border-slate-600 rounded-xl" placeholder="0">
+            </div>
+            <div>
+              <label class="block label-text mb-2">Stay Cost (₹)</label>
+              <input type="number" id="stay-cost" class="w-full p-3 border dark:border-slate-600 rounded-xl" placeholder="0">
+            </div>
+            <div>
+              <label class="block label-text mb-2">Entry Fees (₹)</label>
+              <input type="number" id="entry-fees" class="w-full p-3 border dark:border-slate-600 rounded-xl" placeholder="0">
+            </div>
+          </div>
+          <div class="flex items-center justify-between border-t dark:border-slate-700 pt-8">
+            <div>
+              <p class="label-text text-white mb-1">Total Trip Budget</p>
+              <p id="total-budget" class="text-4xl font-black text-white">₹0</p>
+            </div>
+            <button id="calc-btn" class="px-10 py-4 bg-india-green text-white rounded-2xl font-black hover:opacity-90 transition-all shadow-lg shadow-india-green/20">
+              Calculate Budget
+            </button>
+          </div>
+        </section>
+
+        <!-- Share Section -->
+        <section class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 flex flex-col justify-center items-center text-center">
+          <div class="w-20 h-20 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#128C7E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <h2 class="text-2xl font-bold text-slate-800 dark:text-slate-100 mb-2">Share Your Plan</h2>
+          <p class="text-slate-500 dark:text-slate-400 mb-8">Ready to hit the road? Share your curated trip plan with friends on WhatsApp!</p>
+          <button id="share-btn" class="w-full py-4 bg-[#25D366] text-white rounded-xl font-bold text-lg hover:opacity-90 transition-opacity flex items-center justify-center gap-3">
+            Share via WhatsApp
+          </button>
+        </section>
+      </div>
+
+    </main>
+
+    <footer class="bg-slate-900 text-slate-400 py-12 px-4 text-center">
+      <p class="mb-2">© 2026 Indian Road Travel Guide</p>
+      <p class="text-xs uppercase tracking-widest">Built with Data Structures & Algorithms</p>
+    </footer>
+
+    <script type="module" src="/script.js"></script>
+  </body>
+</html>
+
